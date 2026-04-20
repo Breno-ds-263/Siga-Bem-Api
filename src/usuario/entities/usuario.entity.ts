@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Exclude } from 'class-transformer';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+} from 'typeorm';
 
 export enum TYPEUSER {
   ADMIN = 'ADMIN',
@@ -19,26 +25,30 @@ export enum GENDER {
   OUTRO = 'OUTRO',
 }
 
-@Entity('USERS')
+@Entity('users')
 export class Usuario {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ name: 'NAME' })
-  name: string;
-
-  @Column({ unique: true, name: 'CPF' })
+  @Column({ unique: true, name: 'cpf' })
   cpf: string;
+
+  @Column({ name: 'password' })
+  @Exclude()
+  password: string;
 
   @Column({ name: 'AGE' })
   age: number;
 
-  @Column({ name: 'GENDER' })
+  @Column({ name: 'gender' })
   Gender: GENDER;
 
-  @Column({ name: 'DEFICIENCY' })
+  @Column({ name: 'deficiency ' })
   DEFICIENCY: DEFICIENCY;
 
-  @Column({ name: 'TYPEUSER' })
+  @Column({ name: 'admin' })
   TypeUser: TYPEUSER;
+
+  @CreateDateColumn({ name: 'CREATED_AT' })
+  createdAt: Date;
 }
