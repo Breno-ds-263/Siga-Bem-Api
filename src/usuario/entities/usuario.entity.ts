@@ -37,13 +37,13 @@ export class Usuario {
   @Exclude()
   password: string;
 
-  @Column({ name: 'AGE' })
+  @Column({ name: 'age' })
   age: number;
 
   @Column({ name: 'gender' })
   Gender: GENDER;
 
-  @Column({ name: 'deficiency ' })
+  @Column({ name: 'deficiency' })
   DEFICIENCY: DEFICIENCY;
 
   @Column({ name: 'admin' })
